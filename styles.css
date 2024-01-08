@@ -1,31 +1,36 @@
-*{  padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    max-width: 100vw;
-    background-color: #DDDDDD;
-    overflow-x: hidden;
-    margin: 0 auto;
-  }
-  ::selection {
-    background-color: #3F3F3F;
-  }
-  
-  
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: white;
+  overflow-x: hidden;
+  margin: 0 auto;
+}
+
+::selection {
+  background-color: rgba(0, 0, 0, 0.16);
+}
+
+
 /*  Main Styling  */
 @font-face {
   font-family: "logo";
   src: url("/assets/Micro.ttf");
+}
+@font-face {
+  font-family: "nova";
+  src: url("/assets/nova.otf");
 }
 
 .circle {
   height: 25px;
   width: 25px;
   border-radius: 24px;
-  border:1px solid #3F3F3F;
-  position: fixed; 
+  border: 1px solid black;
+  position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
@@ -33,10 +38,15 @@
 }
 
 /* Hero Section  */
-.logo{
-  margin-top: 3.5rem;
+.hero {
+  min-height: 90vh;
+}
+
+.logo {
+  margin-top: 3rem;
   margin-left: 2rem;
 }
+
 .logo h1 {
   display: inline-block;
   font-family: logo;
@@ -44,26 +54,27 @@
   letter-spacing: 2px;
   line-height: 4rem;
   font-size: 5rem;
-  color: #3F3F3F;
+  color: rgba(0, 0, 0, 0.874);
   user-select: none;
-  transition: transform 0.3s ease; /* Add a smooth transition */
+  transition: transform 0.3s ease;
+  /* Add a smooth transition */
 }
 
-.logo h3{
+.logo h3 {
   user-select: none;
   font-size: 14px;
   letter-spacing: 1px;
   line-height: 24px;
-  color: #3F3F3F;
+  color: rgba(0, 0, 0, 0.874);
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-style: italic;
-  
 }
-.logoheading{
+
+.logoheading {
   position: absolute;
-  top: 19.2vh;
+  top: 18vh;
   left: 19vw;
-  color: #616161;
+  color: rgba(0, 0, 0, 0.771);
   font-family: Favorit, sans-serif;
   font-size: 9px;
   /* mix-blend-mode: difference; */
@@ -72,16 +83,18 @@
   min-width: 20vw;
   max-width: 20vw;
   font-weight: 600;
+  font-style: italic;
 }
 
-.buttons{
+.buttons {
   position: absolute;
   right: 5vw;
-  top:8vh;
+  top: 8vh;
   display: flex;
 }
 
-.chatbtn, .contbtn {
+.chatbtn,
+.contbtn {
   position: relative;
   display: flex;
   z-index: 2;
@@ -90,14 +103,14 @@
   text-decoration: none;
   margin-right: 1.8vw;
   font-family: Favorit, sans-serif;
-  color: #3F3F3F;
+  color: black;
   font-size: 12.6196px;
-  border: 1px solid #3F3F3F;
+  border: 1px solid black;
   padding: 3px 15px;
   border-radius: 3px;
   font-weight: bold;
   letter-spacing: 1px;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .chatbtn::before,
@@ -108,8 +121,8 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: #3f3f3f56;
-  z-index: 0; 
+  background-color: rgba(0, 0, 0, 0.213);
+  z-index: 0;
   transition: left 0.4s ease;
 }
 
@@ -119,17 +132,274 @@
 }
 
 .chatbtn:hover,
-.contbtn:hover{
-  color: #3F3F3F;
-} 
+.contbtn:hover {
+  color: black;
+}
 
-/* .imagecont{
+.cursor {
+  z-index: 999;
+  position: fixed;
+  top: 76%;
+  right: 5%;
+  transform-origin: center;
+  animation: rotate 5s linear infinite;
+  user-select: none;
+}
+
+.cursor img {
+  width: 100px;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.imagecont {
+  position: absolute;
+  z-index: -9;
+  margin-top: 4rem;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  user-select: none;
+  pointer-events: none;
+}
+
+.imagecont img {
+  width: 450px;
+  filter: grayscale();
+}
+
+.gola {
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 20%);
+  z-index: -10;
+  background-color: black;
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px) brightness(0);
+  /* Initial settings */
+
+  /* Animation */
+  animation: brightnessAnimation 2s ease-in-out infinite alternate;
+}
+
+@keyframes brightnessAnimation {
+  0% {
+    filter: blur(80px) brightness(0);
+  }
+
+  100% {
+    filter: blur(60px) brightness(100);
+  }
+}
+
+
+/* Chat Section  */
+.chatsection {
+  margin-top: 15rem;
+  height: 80vh;
+}
+.chatsection h1{
+  margin: 0 auto;
+  font-size: 4rem;
+  text-align: center;
+  letter-spacing: 2px;
+  width: 80vw;
+  font-family: nova, sans-serif;
+  font-weight: lighter;
+  user-select: none;
+  margin-bottom: 5rem;
+}
+.chatitl{
+  font-style: italic;
+  font-family: freight-display-pro, serif, sans-serif;
+  letter-spacing: 0px;
+}
+
+.box{
+  height:40vh;
   display: flex;
-  justify-content: flex-end;
-  margin-right: 5rem;
-} */
-.mainimage{
-  
-  width: 100%;
-  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.boxline{
+  width: 1px;
+  height: 30vh;
+  background-color: black;
+  margin: 0px 5rem;
+}
+.box1{
+  width: 20vw;
+  text-align: start;
+}
+.box1 h2{
+  font-family: nova, sans-serif;  
+  font-weight: lighter;
+}
+.box1 p{
+  font-family: nova, sans-serif;  
+  font-weight: lighter;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+.box2{
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+}
+.box2 h2{
+    font-family: nova, sans-serif;  
+    font-weight: lighter;
+    margin-bottom: 1.2rem;
+  }
+.box2 input{
+  font-size: 1rem;
+  outline: none;
+  font-family: nova, sans-serif;  
+  font-weight: lighter;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 1rem ;
+  margin-bottom: 0.2rem;
+  }
+.box2 button{
+  font-family: nova, sans-serif;  
+  font-weight: lighter;
+  font-size: 0.8rem;
+  outline: none;
+  width: 8vw;
+  border: 1px solid black;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 0.2rem 0.5rem;
+  transition: all 0.3s ease;
+  }
+.box2 button:hover{
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
+
+
+/* Hire  Section  */
+.hiresection{
+  margin-top: 8rem;
+  background-color: rgba(0, 0, 0, 0.969);
+  margin-bottom: 8rem;
+}
+.hiresection h1{
+  color: white;
+  font-size: 4rem;
+  text-align: center;
+  padding-top: 2rem;
+  letter-spacing: 2px;
+  font-family: nova,serif;  
+  font-weight: lighter;
+}
+.aboutsec{
+  display: flex;
+  justify-content: space-evenly;
+}
+.about{
+  z-index: 1;
+  width: 40vw;
+  color: white;
+  font-family: nova,sans-serif;  
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  margin-top: 4rem;
+  font-weight: lighter;
+  font-style: italic;
+}
+.aboutimg img{
+  margin-bottom: -4px;
+  filter: grayscale();
+  width: 300px;
+}
+.hiregola{
+  z-index: 0;
+  position: absolute;
+  width: 500px;
+  height: 400px;
+  border-radius: 50%;
+  filter: blur(70px);
+  background-color: rgba(255, 255, 255, 0.131);
+  transform: translate(50rem,-70%);
+}
+
+/* Footer Section  */
+.footer {
+  border-top: 1px solid rgba(0, 0, 0, 0.383);
+  height: 50vh;
+  overflow: hidden;
+}
+
+.headingf {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.footerlogo {
+  height: 200px;
+  margin-bottom: 3rem;
+}
+
+.footerlogo h1 {
+  margin-top: 4rem;
+  display: inline-block;
+  font-family: logo;
+  font-style: italic;
+  letter-spacing: 2px;
+  line-height: 4rem;
+  font-size: 10rem;
+  -webkit-text-stroke: 0.1px rgba(0, 0, 0, 0.909);
+  color: white;
+  user-select: none;
+  transition: transform 0.3s ease;
+  /* Add a smooth transition */
+}
+
+.footerlogo h3 {
+  user-select: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  line-height: 24px;
+  color: rgba(0, 0, 0, 0.874);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-style: italic;
+}
+
+.copyr {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.878);
+  font-family: Favorit, sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+  line-height: 18px;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.gola2 {
+  display: flex;
+  width: 250px;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 200px;
+}
+
+.icons {
+  font-size: 2rem;
+  color: rgba(0, 0, 0, 0.889);
 }

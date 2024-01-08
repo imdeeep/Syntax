@@ -1,4 +1,20 @@
+
+const lenis = new Lenis()
+
+lenis.on('scroll', (e) => {
+  console.log(e)
+})
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
 // Cursor Follower 
+
+
+// Mouse Follower
 const coords = { x: 0, y: 0 };
 const circles = document.querySelectorAll(".circle");
 
@@ -45,9 +61,35 @@ animateCircles();
 
 
 // Animation 
+document.addEventListener("DOMContentLoaded", function () {
+  const logo = document.querySelector(".logo");
+  const logoHeading = document.querySelector(".logoheading");
+  const chat = document.querySelector(".chatbtn");
+  const cont = document.querySelector(".contbtn");
+  const image = document.querySelector(".imagecont img");
+  const gola = document.querySelector(".gola");
 
-Shery.imageEffect(".mainimage", {
-    style: 3,
-    // debug: true,
-    config: {"uFrequencyX":{"value":9.92,"range":[0,100]},"uFrequencyY":{"value":5.34,"range":[0,100]},"uFrequencyZ":{"value":37.4,"range":[0,100]},"geoVertex":{"range":[1,64],"value":12.54},"zindex":{"value":-9996999,"range":[-9999999,9999999]},"aspect":{"value":2.400000146484384},"ignoreShapeAspect":{"value":true},"shapePosition":{"value":{"x":0,"y":0}},"shapeScale":{"value":{"x":0.5,"y":0.5}},"shapeEdgeSoftness":{"value":0,"range":[0,0.5]},"shapeRadius":{"value":0,"range":[0,2]},"currentScroll":{"value":0},"scrollLerp":{"value":0.07},"gooey":{"value":false},"infiniteGooey":{"value":false},"growSize":{"value":4,"range":[1,15]},"durationOut":{"value":1,"range":[0.1,5]},"durationIn":{"value":1.5,"range":[0.1,5]},"displaceAmount":{"value":0.5},"masker":{"value":false},"maskVal":{"value":1.49,"range":[1,5]},"scrollType":{"value":0},"noEffectGooey":{"value":true},"onMouse":{"value":1},"noise_speed":{"value":0.2,"range":[0,10]},"metaball":{"value":0.2,"range":[0,2]},"discard_threshold":{"value":0.5,"range":[0,1]},"antialias_threshold":{"value":0.002,"range":[0,0.1]},"noise_height":{"value":0.5,"range":[0,2]},"noise_scale":{"value":10,"range":[0,100]}},
-  });
+  // Set initial positions and scale
+  gsap.set([logo, chat, cont], { y: "-1000%" });
+  gsap.set([logoHeading], { x: "-1000%" });
+  gsap.set([gola, image], { scale: "0" });
+
+  // Create a main timeline
+  const mainTimeline = gsap.timeline({ defaults: { duration: 0.8, ease: "expo.out" } });
+
+  // Add animations to the main timeline
+  mainTimeline.to(logo, { y: "0%" })
+              .to(chat, { y: "0%", stagger: 0.1 })
+              .to(cont, { y: "0%", stagger: 0.1 })
+              .to(logoHeading, { x: "0%", stagger: 0.1 });
+
+  // Create a timeline for gola and image
+  const golaImageTimeline = gsap.timeline({ defaults: { duration: 3, ease: "expo.out" } });
+
+  // Add staggered animations to gola and image
+  golaImageTimeline.to([gola, image], { scale: "1", stagger: 0.2 });
+
+});
+
+
+
