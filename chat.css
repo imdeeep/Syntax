@@ -1,0 +1,180 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    width: 70vw;
+    overflow-x: hidden;
+    margin: 0 auto;
+}
+
+::selection {
+    background-color: rgba(0, 0, 0, 0.16);
+}
+
+/* Main Styling */
+@font-face {
+    font-family: "logo";
+    src: url("/assets/Micro.ttf");
+}
+
+@font-face {
+    font-family: "nova";
+    src: url("/assets/nova.otf");
+}
+
+.mainsection {
+    overflow: hidden;
+    margin-top: 1rem;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.mainsection a {
+    display: block;
+    text-decoration: none;
+    background-color: black;
+    text-align: center;
+    border-bottom: 1px solid rgb(0, 0, 0);
+    font-family: logo;
+    font-style: italic;
+    letter-spacing: 2px;
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    user-select: none;
+    transition: all 0.4s ease-in-out;
+}
+
+.mainsection a:hover {
+    transform: scale(1.1);
+}
+
+.chatsection {
+    border-radius: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    max-height: 75vh;
+    overflow-y: auto;
+}
+
+/* Change the color of the scrollbar track */
+.chatsection::-webkit-scrollbar {
+    width: 5px;
+}
+
+.chatsection::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+.chatsection::-webkit-scrollbar-thumb {
+    background-color: #000000e6; 
+    border-radius: 6px; 
+}
+.chatsection::-webkit-scrollbar-button {
+    display: none; 
+}
+
+.alert {
+    text-align: center;
+    font-family: nova, sans-serif;
+    font-size: 0.7rem;
+    font-style: italic;
+    font-weight: lighter;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.sender{
+    flex-direction: column;
+    float: right;
+    clear: both;
+}
+.receiver {
+    flex-direction: column;
+    float: left;
+    clear: both;
+}
+
+.message p {
+    font-family: nova, sans-serif;
+    font-size: 0.8rem;
+    font-weight: lighter;
+}
+
+.sender p{
+    text-align:end;
+    font-size: 0.8rem;
+    margin-right: 0.6rem;
+}
+.receiver p{
+    font-size: 0.8rem;
+    text-align: start;
+    margin-left: 0.6rem;
+}
+.s-msg{
+    font-family: nova, sans-serif;
+    display: inline;
+    font-size: 0.9rem;
+    font-weight: lighter;
+    border: 1px solid black;
+    padding: 8px;
+    max-width: 30vw;
+    word-wrap: break-word;
+    margin-right: 0.5rem;
+    border-radius: 3px;
+}
+
+.r-msg {
+    background-color: rgba(0, 0, 0, 0.131);
+    color: rgb(0, 0, 0);
+    font-family: nova, sans-serif;
+    display: inline;
+    font-size: 0.9rem;
+    font-weight: lighter;
+    border: 1px solid black;
+    padding: 8px;
+    max-width: 30vw;
+    word-wrap: break-word;
+    margin-left: 0.5rem;
+    border-radius: 3px;
+}
+
+
+.msg {
+    display: flex;
+}
+
+.msg input {
+    outline: none;
+    border: 1px solid black;
+    font-family: nova, sans-serif;
+    font-size: 1rem;
+    font-weight: lighter;
+    background-color: white;
+    padding: 8px 12px;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+.msg button {
+    outline: none;
+    letter-spacing: 1px;
+    font-family: nova, sans-serif;
+    font-size: 1rem;
+    border: 1px solid black;
+    font-weight: lighter;
+    background-color: black;
+    color: white;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.msg button:hover {
+    background-color: rgba(0, 0, 0, 0.933);
+}

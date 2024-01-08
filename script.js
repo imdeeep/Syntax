@@ -60,8 +60,7 @@ animateCircles();
 
 
 
-// Animation 
-document.addEventListener("DOMContentLoaded", function () {
+// Animation :
   const logo = document.querySelector(".logo");
   const logoHeading = document.querySelector(".logoheading");
   const chat = document.querySelector(".chatbtn");
@@ -88,8 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add staggered animations to gola and image
   golaImageTimeline.to([gola, image], { scale: "1", stagger: 0.2 });
-
-});
 
 
 
