@@ -42,7 +42,6 @@ animateCircles();
 
 function smoothscroll(){
   const lenis = new Lenis()
-  
   lenis.on('scroll', (e) => {
     console.log(e)
   })
@@ -76,4 +75,5 @@ const golaImageTimeline = gsap.timeline({ defaults: { duration: 3, ease: "expo.o
 
 // Add staggered animations to gola and image
 golaImageTimeline.to([gola, image], { scale: "1", stagger: 0.2 });
+
 

@@ -13,6 +13,29 @@ body {
 ::selection {
   background-color: rgba(0, 0, 0, 0.16);
 }
+/* WebKit Scrollbar Styles */
+*::-webkit-scrollbar {
+width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 10px;
+  border: 3px solid #000000;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.main{
+  position: relative;
+  z-index: 10;
+}
 
 /* Loader  */
 #loader{
@@ -29,6 +52,8 @@ body {
 }
 
 #loader h1{
+  pointer-events: none;
+  user-select: none;
   font-family: nova , sans-serif;
   font-size: 5rem;
   font-style: italic;
@@ -89,12 +114,13 @@ body {
 
 /* Hero Section  */
 .hero {
+  background-color: white;
   min-height: 90vh;
 }
 
 .logo {
-  margin-top: 3rem;
-  margin-left: 2rem;
+  padding-top: 3rem;
+  padding-left: 2rem;
 }
 
 .logo h1 {
@@ -121,19 +147,17 @@ body {
 }
 
 .logoheading {
-  position: absolute;
-  top: 18vh;
-  left: 19vw;
-  color: rgba(0, 0, 0, 0.771);
-  font-family: Favorit, sans-serif;
-  font-size: 9px;
-  /* mix-blend-mode: difference; */
-  letter-spacing: 1.2px;
-  line-height: 18px;
-  min-width: 20vw;
-  max-width: 20vw;
-  font-weight: 600;
-  font-style: italic;
+    color: rgba(0, 0, 0, 0.771);
+    font-family: Favorit, sans-serif;
+    font-size: 9px;
+    letter-spacing: 1.2px;
+    line-height: 18px;
+    position: absolute;
+    transform: translateX(80%);
+    min-width: 20vw;
+    max-width: 20vw;
+    font-weight: 600;
+    font-style: italic;
 }
 
 .buttons {
@@ -211,12 +235,11 @@ body {
 }
 
 .imagecont {
-  position: absolute;
-  z-index: -9;
-  margin-top: 4rem;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%, -50%);
+  display:flex;
+  justify-content: center;
+  z-index: 99;
+  /* background-color: rgb(206, 206, 224); */
+  transform: translateY(-15%);
   user-select: none;
   pointer-events: none;
 }
@@ -225,23 +248,18 @@ body {
   width: 450px;
   filter: grayscale();
 }
-
 .gola {
-  top: 0%;
-  left: 50%;
-  transform: translate(-50%, 20%);
-  z-index: -10;
-  background-color: black;
-  width: 500px;
-  height: 500px;
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  background-color: black;
   border-radius: 50%;
-  filter: blur(70px) brightness(0);
-  /* Initial settings */
-
-  /* Animation */
+  filter: blur(80px);
+  height: 500px;
   animation: brightnessAnimation 2s ease-in-out infinite alternate;
 }
+
 
 @keyframes brightnessAnimation {
   0% {
@@ -256,19 +274,22 @@ body {
 
 /* Chat Section  */
 .chatsection {
-  margin-top: 15rem;
-  height: 80vh;
+  padding-top: 10rem;
+  background-color: rgb(255, 255, 255);
+  padding-top: 1rem;
+  height: 100vh;
+  padding-bottom: 40rem;
 }
 .chatsection h1{
   margin: 0 auto;
   font-size: 4rem;
   text-align: center;
+  padding-bottom: 5rem;
   letter-spacing: 2px;
   width: 80vw;
   font-family: nova, sans-serif;
   font-weight: lighter;
   user-select: none;
-  margin-bottom: 5rem;
 }
 .chatitl{
   font-style: italic;
@@ -277,7 +298,7 @@ body {
 }
 
 .box{
-  height:40vh;
+  /* background-color: white; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -343,29 +364,77 @@ body {
 
 
 /* Hire  Section  */
-.hiresection{
+.hiresection {
+  margin-bottom: 20rem;
+  height: 100vh;
+  background-color: white;
   display: flex;
-  /* margin-top: 8rem; */
-  height: 90vh;
-  background-color: rgba(125, 9, 9, 0.55);
   justify-content: center;
   align-items: center;
+  pointer-events: none;
+  overflow: hidden;
+  user-select: none;
 }
-.hiresection h1{
-  color: rgb(0, 0, 0);
-  font-size: 4rem;
+
+.hireheading {
+  white-space: nowrap;
+  overflow-x: auto;
+  text-align: center;
+}
+
+.hireheading::-webkit-scrollbar {
+  display: none;
+}
+
+.hireheading h2 {
+  padding-right: 2.5vw;
+  padding-left: 2.5vw;
+  display: inline-block;
+  font-size: 6rem;
+  color: transparent;
   letter-spacing: 2px;
-  font-family: nova,serif;  
+  color: black;
+  background-color: transparent;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: nova, serif;
   font-weight: lighter;
+  animation-name: hmove;
+  animation-duration: 7s;
+  padding-bottom: 8rem;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes hmove {
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(-100%);
+  }
+  
 }
 .aboutsec{
-
+  position: absolute;
+  padding-bottom: 8rem;
+}
+.aboutsec img{
+  width: 380px;
+  transform: rotate(-10deg);
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 1px;
 }
 
 /* Footer Section  */
 .footer {
+  /* padding-top: 100rem; */
+  position: fixed;
+  width: 100%;
+  z-index: 9;
+  bottom: 0px;
   border-top: 1px solid rgba(0, 0, 0, 0.383);
-  height: 50vh;
   overflow: hidden;
   background-color: black;
 }
@@ -415,16 +484,252 @@ body {
   font-weight: 600;
   font-style: italic;
 }
-
-.gola2 {
+.gola2{
   display: flex;
-  width: 250px;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  height: 200px;
 }
-
 .icons {
+  margin-left: 2rem;
   font-size: 2rem;
   color: rgba(255, 255, 255, 0.889);
+}
+
+
+
+
+/* RESPONSIVE LAYOUTS  */
+@media screen and (min-width: 1864px) and (max-width: 2600px) {
+  .gola{
+    width: 800px;
+    height: 800px;
+  }
+  .imagecont img{
+    width: 750px;
+  }
+  .logo h1{
+    font-size: 12rem;
+  }
+  .logo h3 {
+    font-size: 20px;
+  }
+  .logo {
+    padding-top: 8rem;
+    padding-left: 8rem;
+}
+.logoheading{
+  font-size: 16px;
+    line-height: 22px;
+    min-width: 24vw;
+}
+.chatbtn ,.contbtn{
+  font-size: 25.6196px;
+}
+.buttons{
+  top: 10vh;
+}
+.circle {
+    height: 50px;
+    width: 50px;
+}
+.cursor img {
+    width: 200px;
+}
+/* .chatsection{
+  padding-bottom: -20rem;
+} */
+.chatsection h1{
+  font-size: 8rem;
+}
+.box1 h2{
+      font-size: 2rem;
+}
+.box1 p{
+    font-size: 1.4rem;
+}
+.box2{
+  font-size:1.3rem;
+}
+.box2 input {
+    font-size: 2rem;
+}
+.box2 button{
+  font-size: 1rem;
+}
+.hireheading h2{
+      font-size: 8rem;
+}
+.aboutsec img {
+    width: 650px;
+}
+}
+
+@media screen and (min-width: 3728px) and (max-width: 4970px) {
+  .gola{
+    width: 1200px;
+    height: 1200px;
+  }
+  .imagecont img{
+    width: 1250px;
+  }
+  .logo h1{
+    font-size: 17rem;
+  }
+  .logo h3 {
+    margin-top: 1rem;
+    font-size: 30px;
+  }
+  .logo {
+    padding-top: 12rem;
+    padding-left: 12rem;
+}
+.logoheading{
+  font-size: 26px;
+    line-height: 28px;
+    min-width: 22vw;
+}
+.chatbtn ,.contbtn{
+  font-size: 35.6196px;
+}
+.buttons{
+  top: 10vh;
+}
+.circle {
+    height: 50px;
+    width: 50px;
+}
+.cursor img {
+    width: 300px;
+}
+/* .chatsection{
+  padding-bottom: -20rem;
+} */
+.chatsection h1{
+  font-size: 10rem;
+}
+.box1 h2{
+      font-size: 4rem;
+}
+.box1 p{
+    font-size: 2.4rem;
+}
+.box2{
+  font-size:2.3rem;
+}
+.box2 input {
+    font-size: 3rem;
+}
+.box2 button{
+  font-size: 2rem;
+}
+.hireheading h2{
+      font-size: 15rem;
+}
+.aboutsec img {
+    width: 1000px;
+}
+}
+
+
+@media screen and (min-width: 350px) and (max-width: 430px){
+  .body{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .gola{
+    width: 300px;
+    height: 300px;
+    margin-left: 1.5rem;
+    margin-top: 8rem;
+  }
+  .imagecont img{
+    /* display: none; */
+    width: 380px;
+    margin-top: 8rem;
+    margin-left: 4rem;
+  }
+  .logo h1{
+    font-size: 3rem;
+    line-height: 0rem;
+  }
+  .logo h3 {
+    /* margin-top: 1rem; */
+    font-size: 10px;
+    line-height: 0.5rem;
+  }
+  .circle {
+    display:none;
+  }
+  .chatbtn ,.contbtn{
+    font-size: 10px;
+    margin-bottom: 0.3rem;
+  }
+  .buttons{
+    display: flex;
+    flex-direction: column;
+    top: 1.5rem;
+    right: -1rem;
+  }
+  .logoheading{
+    font-size: 6px;
+      line-height: 12px;
+      min-width: 30vw;
+      margin-top: 1rem;
+      transform: translateX(30%);
+    }
+    .cursor img {
+      width: 100px;
+      /* position: fixed; */
+    }
+    .chatsection h1{
+      font-size: 2rem;
+      margin-right: 1rem;
+      padding-bottom: 1rem;
+    }
+    .box {
+      flex-direction: column;
+      align-items: start;
+      margin-left: 2rem;
+    }
+    .box1{
+      display: flex;
+      flex-wrap: wrap;
+      width: 80%;
+      margin-bottom: 2rem;
+    }
+    .boxline{
+      display: none;
+    }
+    .box1 h2{
+      font-size: 1.3rem;
+        }
+        .box1 p{
+          font-size: 1rem;
+        }
+        .box2{
+          font-size:1.2rem;
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .box2 h2{
+          margin-bottom: 0px;
+          line-height: 30px;
+        }
+        .box2 input {
+          font-size: 1rem;
+        }
+        .box2 button{
+          font-size: 0.8rem;
+          width: 25vw;
+        }
+        .hiresection{
+          width: 100%;
+          height: 60vh;
+        }
+        .hireheading h2{
+          font-size: 2rem;
+        }
+        .aboutsec img {
+          width: 200px;
+        } 
 }

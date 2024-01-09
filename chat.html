@@ -19,7 +19,7 @@
     <script>
         const params = new URLSearchParams(window.location.search);
         const name = params.get('username') || prompt("Enter your name to join");
-        const socket = io('ws://localhost:8000');
+        const socket = io('https://syntax-server.onrender.com'); // Always use the production URL for WebSocket connection
         const form = document.getElementById('send-cont');
         const messageInput = document.getElementById('messageinp');
         const messageContainer = document.querySelector(".container");
