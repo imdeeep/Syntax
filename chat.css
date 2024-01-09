@@ -26,97 +26,42 @@ body {
     src: url("/assets/nova.otf");
 }
 
-.mainsection {
-    overflow: hidden;
-    margin-top: 1rem;
-    border: 1px solid black;
-    border-radius: 2px;
+.logo{
+    margin-top: 1.5rem;
 }
-
-.mainsection a {
+.logo a{
     display: block;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
     text-decoration: none;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     text-align: center;
-    border-bottom: 1px solid rgb(0, 0, 0);
     font-family: logo;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
     font-style: italic;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     font-size: 2rem;
-    color: rgb(255, 255, 255);
+    -webkit-text-stroke: 1px white;
+    color:transparent;
     user-select: none;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-.mainsection a:hover {
-    transform: scale(1.1);
+.logo a:hover {
+    color: white;
 }
 
-.chatsection {
-    border-radius: 10px;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    max-height: 75vh;
+.container{
+    overflow: hidden;
+    height: 80vh;
+    border: 1px solid rgb(0, 0, 0);
     overflow-y: auto;
 }
 
-/* Change the color of the scrollbar track */
-.chatsection::-webkit-scrollbar {
-    width: 5px;
-}
-
-.chatsection::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-}
-.chatsection::-webkit-scrollbar-thumb {
-    background-color: #000000e6; 
-    border-radius: 6px; 
-}
-.chatsection::-webkit-scrollbar-button {
-    display: none; 
-}
-
-.alert {
-    text-align: center;
-    font-family: nova, sans-serif;
-    font-size: 0.7rem;
-    font-style: italic;
-    font-weight: lighter;
-}
-
-.message {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.sender{
-    flex-direction: column;
-    float: right;
-    clear: both;
-}
-.receiver {
-    flex-direction: column;
-    float: left;
-    clear: both;
-}
-
-.message p {
-    font-family: nova, sans-serif;
-    font-size: 0.8rem;
-    font-weight: lighter;
-}
-
-.sender p{
-    text-align:end;
-    font-size: 0.8rem;
-    margin-right: 0.6rem;
-}
-.receiver p{
-    font-size: 0.8rem;
-    text-align: start;
-    margin-left: 0.6rem;
-}
-.s-msg{
+.msg{
+    margin-top:0.5rem ;
     font-family: nova, sans-serif;
     display: inline;
     font-size: 0.9rem;
@@ -129,27 +74,23 @@ body {
     border-radius: 3px;
 }
 
-.r-msg {
-    background-color: rgba(0, 0, 0, 0.131);
-    color: rgb(0, 0, 0);
-    font-family: nova, sans-serif;
-    display: inline;
-    font-size: 0.9rem;
-    font-weight: lighter;
-    border: 1px solid black;
-    padding: 8px;
-    max-width: 30vw;
-    word-wrap: break-word;
+.left{
+    float: left;
+    clear: both;
     margin-left: 0.5rem;
-    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.126);
+}
+.right{
+    float: right;
+    clear: both;
 }
 
-
-.msg {
+#send-cont {
+    margin-top: 0.2rem;
     display: flex;
 }
 
-.msg input {
+#send-cont input {
     outline: none;
     border: 1px solid black;
     font-family: nova, sans-serif;
@@ -161,7 +102,7 @@ body {
     width: 100%;
 }
 
-.msg button {
+#send-cont button {
     outline: none;
     letter-spacing: 1px;
     font-family: nova, sans-serif;
@@ -175,6 +116,6 @@ body {
     transition: all 0.2s ease-in-out;
 }
 
-.msg button:hover {
+#send-cont button:hover {
     background-color: rgba(0, 0, 0, 0.933);
 }
